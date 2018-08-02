@@ -1,8 +1,8 @@
 <?php
 	$dbhost = 'localhost';
 	$dbuser = 'root';
-	$dbpass = '9696aaAA!';
-	$db = 'BME1';
+	$dbpass = 'root';//'9696aaAA!'
+	$db = 'dev';//'BME1'
 
 	
 	$conn = ($GLOBALS["___mysqli_ston"] = mysqli_connect($dbhost, $dbuser, $dbpass));
