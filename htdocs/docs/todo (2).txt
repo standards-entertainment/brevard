@@ -1,0 +1,64 @@
+/* --------------------------------------------------------------------------------------
+                                      TO-DO-LIST FILE
+   Credits         : phpBMEBWA by Jacob Zipperer
+   Last modified by: Jacob Zipperer 12/16/2014
+-------------------------------------------------------------------------------------- */
+
+add numbers to the table categories of dist. rec. complete. ******
+
+
+Inventory
+Plus and Minus buttons for efficient inventory adjustment.
+<font size=4><a href=''>+</a> / <a href=''>-</a></font>
+
+-------------------
+
+Optimization / Security
+-------------------
+
+More login authentication. (if login fails, store IP address, etc. that attempted it.)
+
+maxlength-255 on every field, everywhere
+
+include(__DIR__ . "/file.php"); everywhere
+
+EDITORS should populate from the DATABASE not from global $_GET variables
+
+remove apostrophe (') from every field to keep database error from happening
+
+make sure every page requires user to be logged in and at a certain user level
+
+root/root
+--------------------
+
+	   -----
+	 ---------
+  ---------------
+ -------------------
+------Phase 3--------
+ -------------------
+  ---------------
+	-----------
+	  -------
+---
+Print Slip
+---
+J
+---
+Develop a printing framework VIA PHP to edit the PDF from the page and populate it with the required information from mysql.
+---
+T
+---
+Design 1 PDF file, with 2 pages.
+Design 1st Page (Blank New Cust Info)
+Design 2nd Page (Blank HIPAA)
+Make it print correctly.
+---
+
+/* --------------------------------------------------------------------------------------
+                                      CONTACT
+							standards.entertainment@gmail.com
+									407 552 9283
+									
+			Please enjoy and report any bugs to me either via eMail or Phone! Thanks!
+-------------------------------------------------------------------------------------- */

@@ -1,1 +1,1 @@
-This is a placeholder
+I have added a the orginal htdocs file.  This is intended for you reference any files you may need from this verision as all duplicate/bloat files will be removed in the next commit. 

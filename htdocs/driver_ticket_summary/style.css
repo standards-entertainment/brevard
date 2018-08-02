@@ -1,0 +1,7 @@
+ul {
+    margin:0;
+    padding: 0;
+}
+#sortable-rows { list-style: none; }
+#sortable-rows li { margin-bottom:4px; margin-top:4px; padding:10px; background-color:#e8f7f6;cursor:move;}
+#sortable-rows li.ui-state-highlight { height: 1.0em; background-color:#ccc;border:#b7b7b7 2px dotted;}

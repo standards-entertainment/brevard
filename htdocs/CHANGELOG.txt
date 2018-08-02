@@ -1,0 +1,228 @@
+latest update changelog VERSION 6.4.54
+
+8/27/2017
+
+This update mainly concerns security risks for Windows systems as well as MOBILE ANDROID User-Side Input Sanitation on the user interface of the client.
+I've addressed and added varying degrees of security, aiding in the defense against 4 different types of user input validation attacks.
+
+---*JQUERY HAS BEEN *-DUCK/PUNCHED-* ON DRIVER TICKET SUMMARY*---
+
+THE PROBLEM:
+
+Drag and Drop wasn't working on MOBILE, due to the mobile features. Instead, a user menu is brought up asking whether they would like to SELECT ALL, CUT, COPY, or PASTE
+
+In order to make our drag & drop feature available on mobile devices I've basically had to hack JQUERY in the form of a DUCK-PUNCH.
+What I've basically done was introduced a secondary JQUERY file that specifically handles what to do in the case of a 'TOUCH', from a 
+TOUCH-SCREEN-DEVICE. This changes the device's default 'MENU' feature, that brings up a miniature menu which allows you to 'select all', 'cut', 'copy', 'paste'
+and replaces it with a feature that allows it to remain sortable on mobile devices. This evidently only works on certain browsers, hence why we have converted
+to FIREFOX. In the future, I have ground plans laid out for a completely universally MOBILE-FRIENDLY user interface for the application, which would allow
+our entire UI to be viewed and easily accessible to both MOBILE and STATIONARY devices.
+
+
+A DUCK-PUNCH hack is a 2-part combo hack that works in segments of halfs-
+
+DUCK - This part is where we DUCK one part of the code, making it inneffective when utilized in the designated atmosphere.
+
+PUNCH - This part is where we PUNCH the code that has been DUCKED, replacing it with what we want it to do, and when.
+
+
+--------------------------------------------------------------
+RESEARCHED AND INTEGRATED ANDROID-SIDE USER SANITATION on high-risk inputs on the user interface
+client-side, to prevent four different types of input attacks to varying degrees.
+
+New APACHE UPDATES have required more security changes specfically involving user sanitation on inputs
+to prevent XSS attacks and ultimately database compromising, providing upgraded security for
+all users, these updates have changed certain ways that data is reached and / or stored in our database. Many forms of our previously 
+implemented USER INPUT SANITATION have been rendered useless and / or obsolete with our latest update.
+
+Effected platforms include:
+
+SLIPS SYSTEM -
+User input sanitation has been re-implemented in a more efficient manner than previously available.
+Our recent implementation of JQUERY has allowed us new possibilities for security that aren't solely reliant upon
+PHP-based defense. By utilizing JQUERY'S client-side user-input sanitation on top of our PHP-based, server side user-input sanitation,
+we allow for multiple layers of protection against many of the most common forms of cyber attacks. 
+
+**Implementation of JQUERYMOBILE in the system and introduction to compatibility on most mobile platforms, this allows us to 
+run smoother on most mobile platforms with fewer bugs. CONGRATULATIONS WE'RE MOBILE DEVELOPING NOW.**
+
+!------------ "DOUBLE CLICK" BUG -----------------!
+
+SECURITY THREAT LEVEL: LOW
+
+Though, low on threats of security, it was a bug nonetheless, addressed and dealt with it has been.
+
+I recently discovered a bug pertaining to conflicting Javascript CSS stylesheets and JQUERY CSS stylesheets specifically on
+https://localhost/driver_ticket_summary/index.php
+where on occasion a user would have to 'double click' to navigate away from the driver ticket summary main screen. The first set of clicks would
+'refresh' the page, requiring the user to navigate away from the page once again in the same fashion, where-as the second set of clicks would then
+direct the user to their desired destination.
+
+*This bug is easily reproducable on my system, when testing on windows XP, though it seems to only happen on occasion, through the proper sequence of events.
+this bug is somewhat less easy to reproduce on a newer operating system (WINDOWS 7), leading me to believe it has a heavy association with the browser*
+
+I have fixed this by better-coordinating the jobs of each CSS stylesheet, while simultaneously prioritizing each CSS stylesheet to their respective duties
+and their respective duties ONLY.
+
+In other words they were both trying to perform a small part of each other's tasks, while the other one was already doing it.
+
+Now, they are both proprietary to their respective job and their own respective job only.
+
+
+!-----------------------------------------------!
+
+A Quick Overview on a few of the various types of attacks this update protects against would be as follows:
+
+1) Canonicalization - A term almost meaning 'normalization', is an input attack in which users can standardize information,
+usually given inputs such as links, by means of altering given variables.
+
+-These are URL attacks usually.-
+
+2) Cross Site Scripting (XSS) - Cross Site Scripting or XSS as it's widely known is a very tough attack to defend against completely
+as client side scripts are constantly evolving and changing, however via various means of user input sanitation some means of basic defense are established.
+With this attack, users are injecting scripts through inputs usually via means outside of the effected site.
+
+-USERS injecting SCRIPTS into our INPUTS!!!-
+
+3) SQL Injection - This is a common attack, we've seen this before several times with apostraphes and other keys that have been removed with javascript.
+This is basically where the infamously common SQL statements are placed within inputs. In previous years complete protection against this was not only
+cumbersome, hindering, innefficient, and counterproductive, but it was also time-consuming and EXPENSIVE. Nowadays, it's conversely quite the opposite.
+
+-THINK: Apostraphe Catastrophe!-
+
+
+Inputs Effected Include:
+
+-------
+LOGIN:
+
+The problem:
+
+We face client-side SQL Injection threats from mobile users;
+
+Back in PHASE 1 we hadn't much concern for the threat of mobile attacks, however now in PHASE 3 
+we are modernizing and the need for protection against possible SQL injection attacks pertaining 
+specifically to mobile devices has arisen. More specifically with the user logins. Left unchecked,
+this could easily lead to MOBILE USERS in particular potentially 'CRACKING' other user accounts,
+in turn potentially rendering an abundance of information available to the perpetrator.
+
+
+Steps I have taken to prevent this:
+
+This concern has been addressed with MOBILE SIDE client/user input sanitation which has also proven to be beneficial for non-mobile testing as well.
+
+
+-----
+EDIT SYSTEM
+
+The problem:
+New PHP Update Version 7.1. has rendered a couple of our previously before used user sanitation scripts all but useless.
+
+Latest PHP Update effects two forms of user input sanitation previously implemented, rendering them obsolete,
+creating a previously before-seen hazard on both the login and the password and bringing it once again into light
+Certain keystrokes will inject data into the SQL, where critical information is stored, something similar to the 
+'APOSTRAPHE CATASTROPHE' from Phase 2; basically, if the person was knowledgable enough, this grants them the 
+ability to manipulate our database in certain fashions do different extents. Any manipulation other than intended
+use is potentially detrimental to the system.
+
+
+What I've Done To Fix This:
+
+New and improved user input sanitation provides more hoops for the user's input to jump through before it goes into our command system and ultimately our work-flow...
+
+I've stuck a few more locks on the door, metaphorically speaking.
+-----
+
+________________________
+Driver Tickets:
+
+The Problem:
+Our system is heavily URL based. It revolves around links and alot of data is passed around within those links.
+With our drivers getting more and more power with every update, the risk on canonicalization is on the rise.
+Certain information may be manipulated through these links to force the system to deviate from our designated algorithms.
+The mainstay of the driver's UI experience is in the driver_ticket_summary, so that is where I focused my efforts for 
+preventing this risk.
+
+Steps I have taken to Prevent This:
+
+I have designed a script that is local specifically to driver ticket summary that processes certain pieces of information
+contained within the links passed around on the driver_ticket_summary, and delegates certain authorities, while also denying
+access to certain types of potentially hazardous variables.
+
+
+
+________________________
+************************
+Risks that have not been fixed that need to be addressed:
+========================
+
+
+Types Of Risks Associated:
+
+
+(THE BIG FOUR)
+
+SQL Injection
+Canonicalization
+Buffer Overflow
+Cross Site Scripting
+
+
+
+Where The Risks Lie:
+
+Client Side Edit Of Records - This was something I hoped to address with the last update,
+however we were over our heads in work as it was, and this being a rather large job in and of itself
+has yet to be completed. Our main defense against this currently is our audit trail, which logs any event that any 
+user causes, logs the user, the time, date, and the action they committed.
+ 
+There needs to be better locks on the door, an all-new sanitation system, applied to every single EDIT system we have.
+
+
+*************************
+
+
+
+The QUICK LIST OF CHANGES would be as follows:
+
+1.) JQUERY DUCK-PUNCH HACK for Drag and Drop fix on MOBILE
+
+2.) JQUERY MOBILE Implementation - Making Mobile Security Possible
+
+3.) "DOUBLE CLICK" BUG ADDRESSED AND FIXED
+
+4.) Re-Vamped User Sanitation Inputs Due To New Apache UPDATE
+
+5.) Android Specific User Sanitation - Researched and Implemented.
+
+6.) LOGIN - Further Protection From SQL Injection
+
+7.) EDIT - Also Further Protection From SQL Injection
+
+8.) Driver Ticket Summary - Established Anti-Canonicalization Parameters
+==================================================
+HOW TO USE THE NEW UPDATE: 
+
+
+Using the new update on MOBILE:
+
+Place finger on sortable list item
+
+Slide finger until the grey bar appears in your desired slot
+
+Remove finger from screen
+
+CONGRATULATIONS, you have just drag and dropped on mobile. :)
+===================================================
+MYSQL CHANGES:
+
+NONE - THANK HEAVENS.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+IN THE FUTURE:
+
+In the future I would like to enhance the user interface's aesthetic, overall
+improving it's effectiveness on mobile platforms. Converting our driver's user interface
+completely to a JQUERY MOBILE atmosphere, along with a few other minor changes as seen fit
+I personally believe would be overall, beneficial to the application and business workflow as a whole.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
